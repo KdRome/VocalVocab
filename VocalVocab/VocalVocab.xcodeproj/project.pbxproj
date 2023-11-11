@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2AED58F2AFF40D2008C00EC /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AED58E2AFF40D2008C00EC /* CompletedViewController.swift */; };
 		E2CA952A2AFF15C900DAE7FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA95292AFF15C900DAE7FC /* AppDelegate.swift */; };
 		E2CA952C2AFF15C900DAE7FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA952B2AFF15C900DAE7FC /* SceneDelegate.swift */; };
 		E2CA952E2AFF15C900DAE7FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA952D2AFF15C900DAE7FC /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2AED58E2AFF40D2008C00EC /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		E2CA95262AFF15C900DAE7FC /* VocalVocab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocalVocab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2CA95292AFF15C900DAE7FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2CA952B2AFF15C900DAE7FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 				E2CA952B2AFF15C900DAE7FC /* SceneDelegate.swift */,
 				E2CA952D2AFF15C900DAE7FC /* ViewController.swift */,
 				E2CA952F2AFF15C900DAE7FC /* Main.storyboard */,
+				E2AED58E2AFF40D2008C00EC /* CompletedViewController.swift */,
 				E2CA95322AFF15CA00DAE7FC /* Assets.xcassets */,
 				E2CA95342AFF15CA00DAE7FC /* LaunchScreen.storyboard */,
 				E2CA95372AFF15CA00DAE7FC /* Info.plist */,
@@ -130,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2AED58F2AFF40D2008C00EC /* CompletedViewController.swift in Sources */,
 				E2CA952E2AFF15C900DAE7FC /* ViewController.swift in Sources */,
 				E2CA952A2AFF15C900DAE7FC /* AppDelegate.swift in Sources */,
 				E2CA952C2AFF15C900DAE7FC /* SceneDelegate.swift in Sources */,
