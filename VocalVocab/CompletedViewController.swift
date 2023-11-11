@@ -17,10 +17,10 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
         
-        let words = array[indexPath.row]
+        var words = array[indexPath.row]
         
-        cell.wordLabel.text = "Test"
-        cell.definitionLabel.text = "hello"
+        cell.wordLabel?.text = words
+        cell.definitionLabel?.text = words
         
         
         return cell
