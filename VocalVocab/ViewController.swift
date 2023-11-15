@@ -10,14 +10,21 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-        //AVSpeechSynthesizer()
+    
+    //AVSpeechSynthesizer()
+    private let synthesizer = AVSpeechSynthesizer()
+    // Function to handle text-to-speech
+    func speakWord(_ word: String) {
+        let utterance = AVSpeechUtterance(string: word)
+        synthesizer.speak(utterance)
+    }
     
         var currentWordClass: WordClass?
         let apiCalls = APICalls()
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            //configureAudioSession()
+            configureAudioSession()
             fetchNewWord()
         }
         
@@ -43,12 +50,19 @@ class ViewController: UIViewController {
     }
     
     // Configure the audio session for playback
-    
+    private func configureAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set up the audio session: \(error)")
+        }
+    }
     
     @IBAction func listentoWordButton(_ sender: UIButton) {
         if let word = currentWordClass?.word {
                 print("Attempting to speak word: \(word)")
-                //speakWord(word)
+                speakWord(word)
             } else {
                 print("No word is currently set.")
             }
@@ -56,11 +70,11 @@ class ViewController: UIViewController {
     @IBAction func listenToDefinitionButton(_ sender: UIButton) {
         if let definition = currentWordClass?.definition {
             print("Attempting to speak definition: \(definition)")
-            //speakWord(definition)
+            speakWord(definition)
         } else {
             var errorText = "No Definiton is found for the word"
             print(errorText)
-            //speakWord(errorText)
+            speakWord(errorText)
         }
     }
 }
