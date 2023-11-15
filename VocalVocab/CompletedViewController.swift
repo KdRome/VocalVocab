@@ -17,7 +17,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
         
-        var words = array[indexPath.row]
+        let words = array[indexPath.row]
         
         cell.wordLabel?.text = words
         cell.definitionLabel?.text = words
