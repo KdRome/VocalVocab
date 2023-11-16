@@ -9,7 +9,7 @@ import UIKit
 
 class CompletedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return correctWords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -17,31 +17,54 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
         
-        let words = array[indexPath.row]
-        
-        cell.wordLabel?.text = words
-        cell.definitionLabel?.text = words
-        
-        
+        let wordClass = correctWords[indexPath.row]
+        cell.wordLabel?.text = "Word: \(wordClass.word)"
+        cell.definitionLabel?.text = "Definition: \(wordClass.definition ?? "No Definition Found")"
         return cell
     }
     
+    var correctWords: [WordClass] = []
     
-    var array = Array<String>()
+    func addWord(_ word: WordClass) {
+        correctWords.append(word)
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
+        
+        let selectedWord = correctWords[selectedIndexPath.row]
+        
+        guard let detailViewController = segue.destination as? DetailViewController else { return }
+        
+        detailViewController.wordClass = selectedWord
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleWordSubmission(_:)), name: .correctWordSubmitted, object: nil)
         tableView.dataSource = self
-        
-        array.append("Hello")
-        array.append("Goodbye")
-        array.append("Testing")
-        
-        
     }
     
     @IBOutlet weak var tableView: UITableView!
     
+    @objc func handleWordSubmission(_ notification: Notification) {
+        if let wordClass = notification.userInfo?["word"] as? WordClass {
+            addWord(wordClass)
+            tableView.reloadData()
+        }
+    }
+}
+
+extension Notification.Name {
+    static let correctWordSubmitted = Notification.Name("correctWordSubmitted")
 }

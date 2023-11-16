@@ -24,8 +24,11 @@ class ViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            configureAudioSession()
+           // configureAudioSession() prob dont actually need this function
             fetchNewWord()
+            if let word = currentWordClass?.word {
+                speakWord(word)
+            }
         }
         
         // Fetch a new word and its definition
@@ -50,6 +53,7 @@ class ViewController: UIViewController {
     }
     
     // Configure the audio session for playback
+    // (prob dont actually need this function)
     private func configureAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
@@ -72,9 +76,43 @@ class ViewController: UIViewController {
             print("Attempting to speak definition: \(definition)")
             speakWord(definition)
         } else {
-            var errorText = "No Definiton is found for the word"
+            let errorText = "No Definition is found for the word"
             print(errorText)
             speakWord(errorText)
+        }
+    }
+    
+    @IBOutlet weak var userInputTextField: UITextField!
+    
+    
+    var completedViewTable: CompletedViewController?
+    
+    @IBAction func submitButton(_ sender: UIButton) {
+        let userSpelling = userInputTextField?.text?.lowercased() ?? ""
+        let correctSpelling = currentWordClass?.word.lowercased()
+            
+        //debugging tests ( delete later )
+        //---------------------------------------------------------
+        print("User Spelling: \(userSpelling)")
+        print("Correct Spelling: \(correctSpelling ?? "nil")")
+        //---------------------------------------------------------
+            
+        if userSpelling == correctSpelling {
+            
+            if let correctWord = currentWordClass {
+                NotificationCenter.default.post(name: .correctWordSubmitted, object: nil, userInfo: ["word": correctWord])
+            }
+            fetchNewWord()
+            speakWord("Correct")
+            print("Correct spelling!")
+            
+            
+            
+            
+        } else {
+            speakWord("Incorrect")
+            print("Incorrect spelling.")
+            
         }
     }
 }

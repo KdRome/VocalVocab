@@ -61,7 +61,7 @@ class APICalls {
                        let definition = firstMeaning.definitions.first?.definition {
                         let definitionText = "The definition of \(word) is: \(definition)"
                         print(definitionText)
-                        completion(definitionText)
+                        completion(definition)
                     } else {
                         print("Definition not found for word \(word)")
                         completion(nil)
@@ -69,8 +69,8 @@ class APICalls {
                 }
             }
             task.resume()
-        }
     }
+}
 
     struct DictionaryEntry: Decodable {
         let word: String
