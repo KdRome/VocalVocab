@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WordClass {
+class WordClass: Codable {
     let word: String
     var nounDefinition: String?
     var verbDefinition: String?
@@ -23,4 +23,20 @@ class WordClass {
 class WordDataModel {
     static let shared = WordDataModel()
     var correctWords: [WordClass] = []
+    
+    func saveWords() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(correctWords) {
+            UserDefaults.standard.set(encoded, forKey: "SavedWords")
+        }
+    }
+    
+    func loadWords() {
+        if let savedWords = UserDefaults.standard.object(forKey: "SavedWords") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedWords = try? decoder.decode([WordClass].self, from: savedWords) {
+                correctWords = loadedWords
+            }
+        }
+    }
 }

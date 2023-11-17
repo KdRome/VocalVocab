@@ -23,6 +23,13 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            WordDataModel.shared.correctWords.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            WordDataModel.shared.saveWords()
+        }
+    }
     //var correctWords: [WordClass] = []
     
     var correctWords : [WordClass] {
@@ -57,6 +64,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleWordSubmission(_:)), name: .correctWordSubmitted, object: nil)
         tableView.dataSource = self
+        WordDataModel.shared.loadWords()
     }
     
     @IBOutlet weak var tableView: UITableView!
