@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         if userSpelling == correctSpelling {
             if let correctWord = currentWordClass {
                 NotificationCenter.default.post(name: .correctWordSubmitted, object: nil, userInfo: ["word": correctWord])
-                WordDataModel.shared.correctWords.append(correctWord)
+                WordDataModel.shared.saveWords()
             }
             fetchNewWord()
             speakWord("Correct")
