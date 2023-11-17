@@ -15,8 +15,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         wordLabel.text = wordClass.word
-        nounDefinition.text = wordClass.definition
-        verbDefinition.text = wordClass.definition
+        nounDefinition.text = wordClass.nounDefinition
+        verbDefinition.text = wordClass.verbDefinition
     }
     
     @IBOutlet weak var wordLabel: UILabel!

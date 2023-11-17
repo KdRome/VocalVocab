@@ -10,7 +10,6 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    
     //AVSpeechSynthesizer()
     private let synthesizer = AVSpeechSynthesizer()
     // Function to handle text-to-speech
@@ -23,7 +22,7 @@ class ViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-           // configureAudioSession() prob dont actually need this function
+            // configureAudioSession() prob dont actually need this function
             
             fetchNewWord()
         }
@@ -35,21 +34,34 @@ class ViewController: UIViewController {
             let wordClass = WordClass(word: newWord)
             self.currentWordClass = wordClass
             print("Fetched and set new word: \(newWord)")
-            speakWord(newWord)
-            self.fetchDefinition(for: newWord, wordClass: wordClass)
+            self.fetchDefinitions(for: newWord, wordClass: wordClass)
+            //speakWord(newWord)
         }
     }
 
-    private func fetchDefinition(for word: String, wordClass: WordClass) {
-        APICalls.shared.fetchDefinition(for: word) { [weak self] definition in
+    private func fetchDefinitions(for word: String, wordClass: WordClass) {
+        APICalls.shared.fetchDefinitions(for: word) { [weak self] (fetchedWordClass, hasDefinition) in
             DispatchQueue.main.async {
-                wordClass.definition = definition
-                self?.currentWordClass?.definition = definition
-                print("Fetched and set definition for \(word): \(definition ?? "None")")
+                guard let strongSelf = self else { return }
+
+                if !hasDefinition {
+                    print("No definitions found for \(word). Fetching a new word.")
+                    strongSelf.fetchNewWord() // Implement fetchNewWord to get a new word
+                } else {
+                    // Update the current wordClass with the fetched definitions
+                    self?.speakWord(word)
+                    wordClass.nounDefinition = fetchedWordClass.nounDefinition
+                    wordClass.verbDefinition = fetchedWordClass.verbDefinition
+
+                    // Update the current wordClass in the ViewController
+                    strongSelf.currentWordClass = wordClass
+
+                    print("Fetched definitions for \(word): Noun - \(fetchedWordClass.nounDefinition ?? "None"), Verb - \(fetchedWordClass.verbDefinition ?? "None")")
+                }
             }
         }
     }
-    
+
     // Configure the audio session for playback
     // (prob dont actually need this function)
     private func configureAudioSession() {
@@ -70,7 +82,13 @@ class ViewController: UIViewController {
             }
     }
     @IBAction func listenToDefinitionButton(_ sender: UIButton) {
-        if let definition = currentWordClass?.definition {
+        if currentWordClass?.nounDefinition == nil {
+            if let definition = currentWordClass?.verbDefinition {
+                print("Attempting to speak definition: \(definition)")
+                speakWord(definition)
+            }
+        }
+        else if let definition = currentWordClass?.nounDefinition {
             print("Attempting to speak definition: \(definition)")
             speakWord(definition)
         } else {
@@ -81,36 +99,25 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var userInputTextField: UITextField!
-    
-    
-    var completedViewTable: CompletedViewController?
-    
     @IBAction func submitButton(_ sender: UIButton) {
         let userSpelling = userInputTextField?.text?.lowercased() ?? ""
         let correctSpelling = currentWordClass?.word.lowercased()
-            
         //debugging tests ( delete later )
         //---------------------------------------------------------
         print("User Spelling: \(userSpelling)")
         print("Correct Spelling: \(correctSpelling ?? "nil")")
         //---------------------------------------------------------
-            
         if userSpelling == correctSpelling {
-            
             if let correctWord = currentWordClass {
                 NotificationCenter.default.post(name: .correctWordSubmitted, object: nil, userInfo: ["word": correctWord])
+                WordDataModel.shared.correctWords.append(correctWord)
             }
             fetchNewWord()
             speakWord("Correct")
             print("Correct spelling!")
-            
-            
-            
-            
         } else {
             speakWord("Incorrect")
             print("Incorrect spelling.")
-            
         }
     }
 }

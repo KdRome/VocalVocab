@@ -19,16 +19,20 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let wordClass = correctWords[indexPath.row]
         cell.wordLabel?.text = "Word: \(wordClass.word)"
-        cell.definitionLabel?.text = "Definition: \(wordClass.definition ?? "No Definition Found")"
+        cell.definitionLabel?.text = "Definition: \(wordClass.nounDefinition ?? "No Definition Found")"
         return cell
     }
     
-    var correctWords: [WordClass] = []
+    //var correctWords: [WordClass] = []
     
-    func addWord(_ word: WordClass) {
-        correctWords.append(word)
-        tableView.reloadData()
+    var correctWords : [WordClass] {
+        return WordDataModel.shared.correctWords
     }
+    
+   // func addWord(_ word: WordClass) {
+    //    correctWords.append(word)
+    //    tableView.reloadData()
+    //}
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -59,7 +63,7 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @objc func handleWordSubmission(_ notification: Notification) {
         if let wordClass = notification.userInfo?["word"] as? WordClass {
-            addWord(wordClass)
+            WordDataModel.shared.correctWords.append(wordClass)
             tableView.reloadData()
         }
     }
