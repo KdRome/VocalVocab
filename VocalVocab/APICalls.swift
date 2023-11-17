@@ -10,10 +10,15 @@ import UIKit
 
 class APICalls {
     
+    static let shared = APICalls()
     var words: [String] = []
+    var wordLength: String = "6"
+    
+    private init() {}
     
     func fetchWords(completion: @escaping ([String]) -> Void) {
-            let randomWordsURL = URL(string: "https://random-word-api.herokuapp.com/word?")!
+        print("Fetching words of length: \(wordLength)")
+            let randomWordsURL = URL(string: "https://random-word-api.herokuapp.com/word?length=\(wordLength)")!
             let task = URLSession.shared.dataTask(with: randomWordsURL) { data, response, error in
                 if let error = error {
                     print("Error fetching words: \(error.localizedDescription)")
@@ -38,7 +43,7 @@ class APICalls {
     
    
     func fetchDefinition(for word: String, completion: @escaping (String?) -> Void) {
-            let definitionURLString = "https://api.dictionaryapi.dev/api/v2/entries/en/\(word)"
+        let definitionURLString = "https://api.dictionaryapi.dev/api/v2/entries/en/\(word)"
         guard let definitionURL = URL(string: definitionURLString) else {
             completion(nil)
             return

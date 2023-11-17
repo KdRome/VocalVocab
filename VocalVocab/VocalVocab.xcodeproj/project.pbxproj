@@ -11,6 +11,7 @@
 		E2644F112B003222009AB424 /* WordClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2644F102B003222009AB424 /* WordClass.swift */; };
 		E2644F132B003302009AB424 /* APICalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2644F122B003302009AB424 /* APICalls.swift */; };
 		E27135722B05C6BE00A0CC73 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27135712B05C6BE00A0CC73 /* DetailViewController.swift */; };
+		E27135742B08089F00A0CC73 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27135732B08089F00A0CC73 /* SettingsController.swift */; };
 		E2AED58F2AFF40D2008C00EC /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AED58E2AFF40D2008C00EC /* CompletedViewController.swift */; };
 		E2CA952A2AFF15C900DAE7FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA95292AFF15C900DAE7FC /* AppDelegate.swift */; };
 		E2CA952C2AFF15C900DAE7FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA952B2AFF15C900DAE7FC /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 		E2644F102B003222009AB424 /* WordClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordClass.swift; sourceTree = "<group>"; };
 		E2644F122B003302009AB424 /* APICalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICalls.swift; sourceTree = "<group>"; };
 		E27135712B05C6BE00A0CC73 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E27135732B08089F00A0CC73 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		E2AED58E2AFF40D2008C00EC /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		E2CA95262AFF15C900DAE7FC /* VocalVocab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocalVocab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2CA95292AFF15C900DAE7FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		E2CA951D2AFF15C900DAE7FC = {
 			isa = PBXGroup;
 			children = (
+				E27135732B08089F00A0CC73 /* SettingsController.swift */,
 				E2644F122B003302009AB424 /* APICalls.swift */,
 				E2644F102B003222009AB424 /* WordClass.swift */,
 				E2CA95292AFF15C900DAE7FC /* AppDelegate.swift */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E27135742B08089F00A0CC73 /* SettingsController.swift in Sources */,
 				E2AED58F2AFF40D2008C00EC /* CompletedViewController.swift in Sources */,
 				E2644F132B003302009AB424 /* APICalls.swift in Sources */,
 				E2CA952E2AFF15C900DAE7FC /* ViewController.swift in Sources */,
