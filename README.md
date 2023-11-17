@@ -42,14 +42,15 @@ VocalVocab, the interactive way to master spelling and expand your vocabulary! D
 
 ### 2. Screen Archetypes
 
-- [ ] Play Screen
+- [X] Play Screen
 * Press play to listen to the word
 * Press play to listen to the description of the word
 
-- [ ] Replay Screen
+- [X] Replay Screen
 * User can retry the word if they get it wrong
+* User gets notified if they get it wrong and can try as many times as they wish
 
-- [ ] Settings Screen
+- [X] Settings Screen
 * User can adjust how many letters they want the word to be
 
 - [ ] Completed Screen
@@ -65,18 +66,18 @@ VocalVocab, the interactive way to master spelling and expand your vocabulary! D
 
 **Flow Navigation** (Screen to Screen)
 
-- [ ] Play Screen
+- [X] Play Screen
 * => Completed
 
-- [ ] Replay Screen
+- [X] Replay Screen
 * => Play Screen
 or 
 * => None
 
-- [ ] Completed Screen
+- [X] Completed Screen
 * => Home
 
-- [ ] Settings
+- [X] Settings
 * => None
 
 ## Wireframes
