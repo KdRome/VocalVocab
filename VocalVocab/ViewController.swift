@@ -20,30 +20,28 @@ class ViewController: UIViewController {
     }
     
         var currentWordClass: WordClass?
-        let apiCalls = APICalls()
         
         override func viewDidLoad() {
             super.viewDidLoad()
            // configureAudioSession() prob dont actually need this function
+            
             fetchNewWord()
-            if let word = currentWordClass?.word {
-                speakWord(word)
-            }
         }
         
         // Fetch a new word and its definition
     private func fetchNewWord() {
-        apiCalls.fetchWords { [weak self] fetchedWords in
+        APICalls.shared.fetchWords { [weak self] fetchedWords in
             guard let self = self, let newWord = fetchedWords.first else { return }
             let wordClass = WordClass(word: newWord)
             self.currentWordClass = wordClass
             print("Fetched and set new word: \(newWord)")
+            speakWord(newWord)
             self.fetchDefinition(for: newWord, wordClass: wordClass)
         }
     }
 
     private func fetchDefinition(for word: String, wordClass: WordClass) {
-        apiCalls.fetchDefinition(for: word) { [weak self] definition in
+        APICalls.shared.fetchDefinition(for: word) { [weak self] definition in
             DispatchQueue.main.async {
                 wordClass.definition = definition
                 self?.currentWordClass?.definition = definition
