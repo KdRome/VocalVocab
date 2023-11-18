@@ -90,14 +90,32 @@ or
 
 ## Schema 
 
-[This section will be completed in Unit 9]
-
 ### Models
 
-[Add table of models]
+#### WordClass
+
+| Property      | Type     | Description |
+| ------------- | -------- | ----------- |
+| word          | String   | The word itself |
+| nounDefinition| String?  | The definition of the word when used as a noun |
+| verbDefinition| String?  | The definition of the word when used as a verb |
+
+- `WordClass`: Represents a word with its possible noun and verb definitions.
+- `WordDataModel`: Collection of `WordClass` instances, including saving and loading from UserDefaults.
+
 
 ### Networking
 
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### Word & Definition Fetching
+
+- (GET) Query Word
+   ```swift
+   func fetchWords(completion: @escaping ([String]) -> Void) {
+       let randomWordsURL = URL(string: "https://random-word-api.herokuapp.com/word?length=\(wordLength)")!
+   }
+   
+- (GET) Query Word Definition
+   ```swift
+   func fetchDefinitions(for word: String, completion: @escaping (WordClass, Bool) -> Void) {
+        let definitionURLString = "https://api.dictionaryapi.dev/api/v2/entries/en/\(word)"
+   }
