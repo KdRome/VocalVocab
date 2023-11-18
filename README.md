@@ -11,7 +11,7 @@
 
 ### Description
 
-VocalVocab, the interactive way to master spelling and expand your vocabulary! Designed for learners of all levels, VocalVocab transforms your mobile device into a personal spelling tutor. Whether you're studying for a spelling bee, learning a second language, or just brushing up on your word skills, VocalVocab offers a unique and engaging educational experience.
+VocalVocab is the interactive way to master spelling and expand your vocabulary! Designed for learners of all levels, VocalVocab transforms your mobile device into a personal spelling tutor. Whether you're studying for a spelling bee, learning a second language, or just brushing up on your word skills, VocalVocab offers a unique and engaging educational experience.
 
 ### App Evaluation
 
@@ -19,7 +19,7 @@ VocalVocab, the interactive way to master spelling and expand your vocabulary! D
 - **Mobile:** Uses Audio, Real-Time, Notifications(maybe)
 - **Story:** Learners, Competitive Spellers. Allows users to improve the spelling of words that they hear. Users might find this application engaging if they are interested in self-improvement, education, or language mastery
 - **Market:** Educational Institutions, Individual Learners, Global Non-English Speakers (more languages can potentially be added)
-- **Habit:** Daily Practices, Progress Tracking. Can track the users progress. Users can open this application daily to improve their language skills. The average user consumes the content.
+- **Habit:** Daily Practices, Progress Tracking. Can track the user's progress. Users can open this application daily to improve their language skills. The average user consumes the content.
 - **Scope:** It may be challenging to build a perfect version of this app. It would still be interesting to build a stripped-down version of this app.
 
 ## Product Spec
@@ -28,11 +28,11 @@ VocalVocab, the interactive way to master spelling and expand your vocabulary! D
 
 **Required Must-have Stories**
 
-* User can hear the given word
-* User can hear the description of the given word
-* User can adjust how many letters they want the word to be
-* User can see which words they have answered previously
-* User can retry the word if they get it wrong
+* [x] User can hear the given word
+* [x] User can hear the description of the given word
+* [x] User can adjust how many letters they want the word to be
+* [x] User can see which words they have answered previously
+* [x] User can retry the word if they get it wrong
 
 **Optional Nice-to-have Stories**
 
@@ -47,13 +47,13 @@ VocalVocab, the interactive way to master spelling and expand your vocabulary! D
 * Press play to listen to the description of the word
 
 - [X] Replay Screen
-* User can retry the word if they get it wrong
+* Users can retry the word if they get it wrong
 * User gets notified if they get it wrong and can try as many times as they wish
 
 - [X] Settings Screen
 * User can adjust how many letters they want the word to be
 
-- [ ] Completed Screen
+- [X] Completed Screen
 * User can see which words they have answered correctly
 * User can replay words they completed
 
