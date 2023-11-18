@@ -88,6 +88,8 @@ or
 
 ### [BONUS] Interactive Prototype
 
+![Simulator Screen Recording - iPhone 13 Pro Test - 2023-11-17 at 20 18 04](https://github.com/KdRome/VocalVocab/assets/119768219/cc658182-983b-49c6-a785-07ae5cc119bd)
+
 ## Schema 
 
 ### Models
