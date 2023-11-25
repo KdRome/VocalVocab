@@ -10,17 +10,14 @@ import UIKit
 
 class SettingsController: UIViewController {
     
-    
     @IBOutlet weak var settingsTextField: UITextField!
     
     @IBAction func setSettingsButton(_ sender: UIButton) {
-        // Update wordLength based on the textField's content
             if let text = settingsTextField.text, !text.isEmpty {
                 APICalls.shared.wordLength = text
             } else {
-                APICalls.shared.wordLength = "5" // Replace with your default length
+                APICalls.shared.wordLength = "5"
             }
         print("Word Length set to: \(APICalls.shared.wordLength)")
     }
-    
 }

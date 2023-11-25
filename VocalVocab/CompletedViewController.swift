@@ -30,16 +30,10 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
             WordDataModel.shared.saveWords()
         }
     }
-    //var correctWords: [WordClass] = []
-    
+
     var correctWords : [WordClass] {
         return WordDataModel.shared.correctWords
     }
-    
-   // func addWord(_ word: WordClass) {
-    //    correctWords.append(word)
-    //    tableView.reloadData()
-    //}
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,11 +45,8 @@ class CompletedViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
-        
         let selectedWord = correctWords[selectedIndexPath.row]
-        
         guard let detailViewController = segue.destination as? DetailViewController else { return }
-        
         detailViewController.wordClass = selectedWord
     }
     
