@@ -33,6 +33,7 @@ VocalVocab is the interactive way to master spelling and expand your vocabulary!
 * [x] User can adjust how many letters they want the word to be
 * [x] User can see which words they have answered previously
 * [x] User can retry the word if they get it wrong
+* [x] User can delete a word from correct answers by swiping left
 
 **Optional Nice-to-have Stories**
 
@@ -51,11 +52,10 @@ VocalVocab is the interactive way to master spelling and expand your vocabulary!
 * User gets notified if they get it wrong and can try as many times as they wish
 
 - [X] Settings Screen
-* User can adjust how many letters they want the word to be
+* Users can adjust how many letters they want the word to be
 
 - [X] Completed Screen
 * User can see which words they have answered correctly
-* User can replay words they completed
 
 ### 3. Navigation
 
