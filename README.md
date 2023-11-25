@@ -9,6 +9,8 @@
 
 ## Overview
 
+### Warning: Only Works on IOS 16.4 and below, IOS 17.0 currently has a bug with the TTS system
+
 ### Description
 
 VocalVocab is the interactive way to master spelling and expand your vocabulary! Designed for learners of all levels, VocalVocab transforms your mobile device into a personal spelling tutor. Whether you're studying for a spelling bee, learning a second language, or just brushing up on your word skills, VocalVocab offers a unique and engaging educational experience.
